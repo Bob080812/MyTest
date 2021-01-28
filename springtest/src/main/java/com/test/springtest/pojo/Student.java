@@ -6,6 +6,7 @@ import tk.mybatis.mapper.annotation.KeySql;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import java.util.Date;
 
 @Table(name = "student")
 @Data
@@ -16,6 +17,7 @@ public class Student {
 
     String name;
     String className;
+    Date createTime;
     @Transient
     String remark;
 }

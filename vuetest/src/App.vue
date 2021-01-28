@@ -1,17 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button @click="test">测试</button>
+    <div>{{see}}</div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import qs from 'qs'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+  },
+  data(){
+    return{
+      see:null,
+    }
+  },
+  methods:{
+    test(){
+      this.$axios({
+        method:"post",
+        url:'/`hello`',
+        headers:{
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        data: qs.stringify({"id":"1"}),
+      }).then(response =>{
+        this.see=response;
+      })
+    }
   }
 }
 </script>
